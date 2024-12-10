@@ -28,6 +28,7 @@ df.columns = df.columns.str.strip()
 
 print("Colunas disponíveis:", df.columns.tolist())
 
+#Função para formatar os cpfs
 def formatar_cpf(cpf):
     try:
         cpf = str(int(cpf))  
@@ -39,6 +40,7 @@ def formatar_cpf(cpf):
 
 os.makedirs(pasta_saida, exist_ok=True)
 
+#função para substituir os placeholders e evitar conflitos na susbtituoção dos textos
 def substituir_placeholder_em_runs(paragrafo, placeholder, texto, negrito=False):
     if placeholder in paragrafo.text:
         for run in paragrafo.runs:
@@ -47,11 +49,12 @@ def substituir_placeholder_em_runs(paragrafo, placeholder, texto, negrito=False)
                 if negrito:
                     run.bold = True
 
+#Consulta se as tabelas existem
 if not {"Unnamed: 5", "Número do documento de identidade"}.issubset(df.columns):
     print("Faltando alguma coluna no arquivo.")
     print("Colunas encontradas:", df.columns.tolist())  
 else:
-    
+    #Se as tabelas existirem ele efetua a automação
     for _, row in df.iterrows():
         nome_completo = row["Unnamed: 5"]
         cpf_formatado = formatar_cpf(row["Número do documento de identidade"])
