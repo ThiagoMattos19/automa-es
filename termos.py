@@ -64,10 +64,7 @@ else:
         for paragrafo in doc.paragraphs:
             substituir_placeholder_em_runs(paragrafo, "{{NOME}}", nome_completo, negrito=True)
             substituir_placeholder_em_runs(paragrafo, "{{CPF}}", cpf_formatado, negrito=True)
-            substituir_placeholder_em_runs(paragrafo,"{{DATE}}", str(data_hoje),negrito=False )
-
-
-
+            substituir_placeholder_em_runs(paragrafo,"{{DATE}}", str(data_hoje), negrito=False)
 
         nome_arquivo = f"{pasta_saida}/termo_{nome_completo.replace(' ', '_')}.docx"
         
