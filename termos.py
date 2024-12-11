@@ -22,6 +22,7 @@ meses ={
     11: "Novembro",
     12: "Dezembro"
 }
+
 df = pd.read_excel(caminho_planilha, header=1)
 
 df.columns = df.columns.str.strip()
@@ -40,7 +41,7 @@ def formatar_cpf(cpf):
 
 os.makedirs(pasta_saida, exist_ok=True)
 
-#função para substituir os placeholders e evitar conflitos na susbtituoção dos textos
+#função para substituir os placeholders e evitar conflitos na substituição dos textos
 def substituir_placeholder_em_runs(paragrafo, placeholder, texto, negrito=False):
     if placeholder in paragrafo.text:
         for run in paragrafo.runs:
